@@ -1,0 +1,32 @@
+h1 {
+    color:plum;
+    font-size: 2em;
+    background-color:beige;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    border-style:ridge;
+    border-width: 20px;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-color:bisque;
+
+}
+
+body {
+    background-color: cadetblue;
+}
+
+
+h2 {
+    font-size: 1.5em;
+    margin: 20px;
+    border: 10px;
+    border-right: 0;
+    text-align: center;
+    color:honeydew;
+}
+
+a{
+    color:honeydew
+}

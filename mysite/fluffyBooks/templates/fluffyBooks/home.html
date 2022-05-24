@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BookBlitz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+
+    <style>
+        .h-same{
+            height:100%; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        
+    </style>
+    
+</head>
+
+
+
+
+<body>
+            
+    {% include 'fluffyBooks/navbar.html' %}
+    <!-- <section class="section"> -->
+    <section class="hero is-warning mt-5">
+        <section class="section">
+            <div class="container">
+                <h1 class="title has-text-centered is-size-2">
+                    Discover new things. Discover BookBlitz.
+                </h1>
+                
+
+
+
+
+                <div class="columns">
+                    
+                    <div class="column">
+                        
+                        <div class="box has-background-white has-text-centered">
+
+                            <span class="icon">
+                                <i class="fa-solid fa-arrow-pointer"></i>
+                            </span>
+                            <a href="http://127.0.0.1:8000/fluffyBooks/reviews"><strong>Discover</strong> recent book
+                                reviews</a>
+
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box has-background-white has-text-centered">
+                            <span class="icon">
+                                <i class="fa-solid fa-arrow-pointer"></i>
+                            </span>
+                            <a href="http://127.0.0.1:8000/fluffyBooks/review"><strong>Share</strong> your own favourite
+                                books</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box has-background-white has-text-centered">
+                            <span class="icon">
+                                <i class="fa-solid fa-arrow-pointer"></i>
+                            </span>
+                            <a href="http://127.0.0.1:8000/fluffyBooks/genres"><strong>Explore</strong> new genres</a>
+                        </div>
+                    </div>
+                </div>
+
+
+        </section>
+    </section>
+
+    <!-- </section> -->
+
+    <section class="section">
+
+        {% if like %}
+        <div class="notification">
+            <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+        <article class="message">
+            <div class="message-header has-background-primary">
+                <h2 class="subtitle">Please login or create an account to like a book!</h2>
+            </div>
+            <div class="message-body has-background-primary-light">
+                <p>It's quick and easy - just click <a href="http://127.0.0.1:8000/fluffyBooks/login">here</a></p>
+        </div>
+            </div>
+        </article>
+    </div>
+    {% endif %}
+
+    {% if messages %}
+        {% for msg in messages %}
+            {% if msg.tags == "success" %}
+                <div class="notification">
+                    <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+                    <article class="message">
+                        <div class="message-header has-background-primary">
+                            <h2 class="subtitle">You succesfully shared a book review!</h2>
+                        </div>
+                        <div class="message-body has-background-primary-light">
+                            <p>View other recent reviews <a href="http://127.0.0.1:8000/fluffyBooks/reviews">here!</a></p>
+                        </div>
+                    </article>
+                </div>
+            {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if logged_out %}
+    <div class="notification">
+        <article class="message">
+            <div class="message-header has-background-primary">
+                <h2 class="subtitle">You have logged out.</h2>
+                <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+            </div>
+            <div class="message-body has-background-primary-light">
+                <p>Log back in to access additional features</p>
+            </div>
+        </article>
+    </div>
+    {% endif %}
+        <p class="title">
+            Top 6 Trending Books
+        </p>
+
+    {% include 'fluffyBooks/cards.html' %}
+        <!-- <div class="columns is-multiline">
+            {% for book in trending_list %}
+            <div class="column is-4">
+                <a href="{% url 'book'%}?book={{book.id}}">
+                <div class="card has-background-white">
+
+
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="title is-3 is-centered">{{book.book_text}}</p>
+                            <p class="subtitle is-6 is-centered">{{book.book_genre}}</p>
+                        </div>
+                        
+                        <div class="content">
+                            <p>Blurb or most recent rec for book???</p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        
+                            <p class="card-footer-item">
+                                <span>
+                                    <a href="{% url 'like'%}?book={{book.id}}">{{book.likes}}
+
+                                        <span class="icon is-small" style="color:hotpink">
+                                            <i class="fa-solid fa-heart"></i>
+                                        </span>
+                                    </a>
+                                </span>
+                            </p>
+                        
+                    </div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div> -->
+    </section>
+
+
+
+
+
+
+
+    <!--<table class="table">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Book</th>
+                <th>Likes</th>
+    </tr>
+    </thead>
+
+    {% for book in trending_list %}
+    <tr>
+    <th>{{forloop.counter}}</th>
+        <td><a href="{% url 'book'%}?book={{book.id}}"><b>{{book.book_text}}</b></a></td>
+            <td><a href="{% url 'like'%}?book={{book.id}}">Inslit Icon</a> {{book.likes}}</a></td>
+        {% endfor %}
+    </tr>
+    </tbody>
+    </table>-->
+
+</body>
+
+</html>

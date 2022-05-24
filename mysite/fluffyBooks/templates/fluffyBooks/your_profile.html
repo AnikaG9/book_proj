@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{request.user.username}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        {% include 'fluffyBooks/navbar.html' %}
+        <section class="section">
+        <h1 class="title">
+            Your Account: 
+        </h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-fifth">
+                <aside class="menu">
+                    <p class="menu-label">
+                        General
+                    </p>
+                    <ul class="menu-list">
+                        <li><a href="http://127.0.0.1:8000/fluffyBooks/account">Account Home</a></li>
+                        <li><a href="http://127.0.0.1:8000/fluffyBooks/accreviews">Reviews</a></li>
+                      </ul>
+        
+                </aside>
+            </div>
+       
+       
+        <div class="column">
+        <div class="tile is-ancestor">
+            <div class="tile box">
+                <ul>
+                    <li class="title is-4">Username: {{request.user.username}}</li>
+                    <li class="title is-6">Last Login: {{request.user.last_login}}</li>
+                    <li class="title is-6">Joined: {{request.user.date_joined}}</li>
+                </ul>
+                
+                
+            </div>
+        </div>
+    </div>
+    </div>
+        
+       
+
+            
+        </section>
+    </body>
+</html>

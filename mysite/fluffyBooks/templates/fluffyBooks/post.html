@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Write a recommendation!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+
+</head>
+    <body>
+        {% include 'fluffyBooks/navbar.html' %}
+
+
+        <section class="section">
+            {% if logged %}
+
+    <div class="notification">
+        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+    <article class="message">
+        <div class="message-header has-background-primary">
+            <h2 class="subtitle">Please login or create an account to share a review!</h2>
+        </div>
+        <div class="message-body has-background-primary-light">
+            <p>It's quick and easy - just click <a href="http://127.0.0.1:8000/fluffyBooks/signup">here</a></p>
+    </div>
+        </div>
+    </article>
+</div>
+    {% endif %}
+
+        <form action="/fluffyBooks/post" method="post">
+            {% csrf_token %}
+
+            <h1 class="title">
+                Write a recommendation!
+            </h1>
+
+        
+
+            <div class="columns">
+                <div class="column is-half">
+            <div class="field">
+                <label class="label">Which book are you reviewing?</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-hovered" name="book_text" rows="1" cols="50" placeholder="e.g. Harry Potter"></input>
+
+
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-book"></i>
+                    </span>
+                </div>
+                <label class="label mt-4">Who is the author of this book?</label>
+                <div class="control has-icons-left">
+                    <input class="input is-hovered" name="author" rows="1" cols="50" placeholder="e.g. J.K Rowling"></input>
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-at"></i>
+                    </span>
+                </div>
+                <label class="label mt-4">What genre does this book fit into?</label>
+               <!-- <div class="select">
+                    <select>
+                        {% for genre in genres %}
+                        <option>{{genre.genre_text}}</option>
+                        {% endfor %}
+                    </select>
+                </div>-->
+        </div>
+        <div class="columns is-multiline">
+            <div class="column">
+        {% for genre in genres %}
+                 <label class="radio" for="genre">
+                     
+                    <input type="checkbox" id="{{genre.id}}" name="genres" value="{{genre.genre_text}}">
+                    <label for="genres">{{genre.genre_text}}</label>
+                    
+                </label>
+                <br>
+                {% endfor %}
+            
+            </div>
+            </div>
+                 </div>
+                
+
+<div class="column">
+    <div class="field">
+        <label class="label">Your View</label>
+        <div class="control has-icons-left">
+            <textarea class="textarea is-hovered" name="review_text" rows="8" cols="50" placeholder="Give some information on why you liked the book, how much you might rate it and any other information that might be important"></textarea>
+            <span class="icon is-small is-left">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+
+        
+            
+            
+       
+       
+
+        
+    </div>
+            
+    <div class="field">
+        <div class="control">
+            <div class="buttons is-centered">
+                <input class="button is-primary is-large" type="Submit", value="Share your review with the world!">
+            </div>
+        </div>
+    </div>
+           
+        </form>
+    </section>
+    </body>
+
+    
+
+</html>

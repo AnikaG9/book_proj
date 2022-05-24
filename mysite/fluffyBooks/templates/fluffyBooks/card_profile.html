@@ -1,0 +1,18 @@
+<style>
+        .h-same{
+            height:100%; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+</style>
+
+<a href="fluffyBooks/account">
+    <div class="card h-same">
+        <div class="card-content">
+            <div class="content">
+                <p class="title is-3">{{request.user.username}}</p>
+            </div>
+        </div>
+    </div>
+</a>

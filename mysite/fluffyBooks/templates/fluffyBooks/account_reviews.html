@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{request.user.username}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+
+    <style>
+      .b-same{
+          height:100%; 
+          display: flex; 
+          flex-direction: column;
+      }
+  </style>
+    </head>
+
+
+<body>
+    {% include 'fluffyBooks/navbar.html' %}
+    <section class="section">
+        <h1 class="title">
+            Your Account: 
+        </h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-fifth">
+                <aside class="menu">
+                    <p class="menu-label">
+                        General
+                    </p>
+                    <ul class="menu-list">
+                      <li><a href="http://127.0.0.1:8000/fluffyBooks/account">Account Home</a></li>
+                        <li><a href="http://127.0.0.1:8000/fluffyBooks/accreviews">Reviews</a></li>
+                      </ul>
+        
+                </aside>
+            </div>
+{% if recommendations %}
+            <div class="column">
+                <h1 class="title is-3">Your recommendations:</h1>
+        
+        
+        
+                
+                  <div class="columns is-multiline">
+                    
+        {% for recommendation in recommendations %}
+        <div class="column is-half">
+        <div class="box b-same">
+        <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><a href="{% url 'book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong>
+                  {% for i in recommendation.review_book.book_authors.all %}
+                  <small> By: {{i}}</small>
+                  {% endfor %}
+                  <small> - {{recommendation.review_date}}</small>
+                  <br>
+                  {{recommendation.review_text}}
+                </p>
+              </div>
+              
+            </div>
+            <div class="media-right">
+              <a class="delete" href="{% url 'delete'%}?review={{recommendation.id}}"></a>
+            </div>
+          </article>
+        </div>
+        </div>
+      
+          {% endfor %}
+        
+        </div>
+        </div>
+        {% endif %}
+        </div>
+      
+    
+        </section>
+</body>
+</html>
+

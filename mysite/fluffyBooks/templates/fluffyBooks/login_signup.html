@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="section">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+        <li class="is-active"><a href="http://127.0.0.1:8000/fluffyBooks/login" aria-current="page">Sign In</a></li>
+          <li><a href="http://127.0.0.1:8000/fluffyBooks/signup">Create An Account</a></li> 
+        </ul>
+      </nav>
+
+    
+        <h1 class="title">
+            We want to hear more of your voice! Sign In Now!
+        </h1>
+    <div class="columns">
+    <div class="column is-one-third">
+    <form class="box has-background-warning" action="/fluffyBooks/verify" , method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-left">
+                <input class="input is-primary" type="text" , name="username" placeholder="e.g. BookFan123">
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left">
+                <input class="input is-primary" type="password" name="password" placeholder="*****">
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-unlock"></i>
+                </span>
+                
+            </div>
+        </div>
+
+        
+        <input class="button is-primary" type="submit" , value="Login">
+    </form>
+</div>
+    </div>
+</section>
+</body>
+
+</html>

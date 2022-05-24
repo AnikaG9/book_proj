@@ -1,0 +1,65 @@
+<div class="columns is-multiline">
+    {% for book in cardbooks %}
+    <div class="column is-4">
+        <a href="{% url 'book'%}?book={{book.id}}">
+        <div class="card h-same has-background-white">
+
+
+            <div class="card-content">
+                <div class="content">
+                    
+               
+                    <p class="title is-3 is-centered">{{book.book_text}}</p>
+                
+                    <p class="subtitle is-6 is-centered">
+                        By:
+                        {% for author in book.book_authors.all %}
+                             {{author.author_name}} 
+                        {% endfor %}
+                    </p>
+                    <p class="subtitle is-6 is-centered">
+                        {% if book.book_genres.count > 1 %}
+                            Genres:
+                            {% for genre in book.book_genres.all %}
+                                {% if forloop.counter == book.book_genres.all|length %}
+                                    {{genre.genre_text}}
+                                {% else %}
+                                    {{genre.genre_text}},
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            Genre:
+                            {% for genre in book.book_genres.all %}
+                                {{genre.genre_text}}
+                        {% endfor %}
+                         {% endif %}
+                        
+                    </p>
+                    
+                </div>
+                
+                <div class="content">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                
+                    <p class="card-footer-item">
+                        <span>
+                            <a href="{% url 'like'%}?book={{book.id}}">{{book.likes}}
+
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </p>
+                
+            </div>
+        </div>
+        </a>
+    </div>
+    {% endfor %}
+    
+</div>

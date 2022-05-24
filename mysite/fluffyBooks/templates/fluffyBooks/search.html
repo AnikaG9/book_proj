@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+</head>
+
+<html>
+    <body>
+        {% include 'fluffyBooks/navbar.html' %}
+
+        <section class="hero is-warning">
+          <div class="hero-body">
+              <h1 class="title">
+                  Your Search "{{searched}}" shows: 
+              </h1>
+          </div>
+      </section>
+
+        <section class="section">
+            <article class="message">
+                <div class="message-header has-background-primary">
+                    <h2>We found nothing to match "{{searched}}"</h2>
+                </div>
+                <div class="message-body has-background-primary-light">
+                    <p>Be the first to <a href="http://127.0.0.1:8000/fluffyBooks/review">write a review</a> based on your search</p>
+                </div>
+            </article>
+        
+        
+        
+    </section>
+
+        
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+    <div class="navbar-brand">
+        <div class="navbar-item has-text-large is-size-3 has-text-primary">
+            <div class="container">
+                <a href="http://127.0.0.1:8000/fluffyBooks/" class="navbar-item has-text-primary">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </span>
+                    
+                    <span><strong>BookBlitz</strong></span>
+                </span>
+                    
+            
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            
+                
+            
+            
+            <!--<div class="navbar-dropdown">
+                <div class="navbar-item">
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                              <p>
+                                <strong></strong> <small>@johnsmith</small> <small>31m</small>
+                                <br>
+                            
+                              </p>
+                            </div>
+                            <nav class="level is-mobile">
+                              <div class="level-left">
+                                <a class="level-item">
+                                  <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                </a>
+                                <a class="level-item">
+                                  <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                </a>
+                                <a class="level-item">
+                                  <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                </a>
+                              </div>
+                            </nav>
+                          </div>
+                          <div class="media-right">
+                            <button class="delete"></button>
+                          </div>
+                    </article>
+                </div>
+                </div>
+            
+       
+            
+
+        </div>-->
+
+  
+
+    
+        <div class="navbar-item">
+                {% if not request.user.is_authenticated %}
+                <nav class="level">
+                    <div class="level-item">
+                        <p class="level-item is-5 has-text-primary mr-3 mt-5">
+                            You are not signed in
+                        </p>
+                    </div>
+                </nav>
+                <div class="buttons">
+                    <a href="http://127.0.0.1:8000/fluffyBooks/signup" class="button is-primary">
+                        Create an account
+                    </a>
+                    <a href="http://127.0.0.1:8000/fluffyBooks/login" class="button is-warning">
+                        Sign In
+                    </a>
+                    {% endif %}
+                {% if request.user.is_authenticated %}
+                <p class="level-item is-5 has-text-primary mr-3">
+                    You are signed in
+                </p>
+                <a href="{% url 'logout_user' %}" class="button is-warning">
+                    <p>Log Out</p>
+                </a>
+                {% endif %}
+            
+                <form action="search" method="get" class="column">
+                    {% csrf_token %}
+
+
+                    <div class="field is-grouped">
+
+
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" id="search" name="search"
+                                placeholder="Browse books, genres or authors" />
+                            <span class="icon is-small is-left">
+                                <i class="fa-solid fa-pen"></i>
+                            </span>
+                        </div>
+                        <button class="button is-primary"><span class="icon is-small is-left">
+                                <i class="fas fa-search"></i>
+                            </span></button>
+                    </div>
+                </form>
+                {% if request.user.is_authenticated %}
+                <div class="navbar-item has-dropdown is-hoverable is-fullwidth">
+                    <a href="{% url 'your_profile' %}" class="navbar-link">
+                        <span class="icon-text">
+                            <span class="icon">
+                                <i class="fa-solid fa-user-large"></i>
+                            </span>
+                        </span>
+                    </a>
+
+                    <div class="navbar-dropdown is-right">
+                            {% include 'fluffyBooks/card_profile.html' %}
+                    </div>
+                </div>
+                
+                
+                {% endif %}
+            </div>
+        </div>
+
+    
+
+</nav>

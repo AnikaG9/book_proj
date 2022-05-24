@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+
+    <style>
+      .r-same{
+          height:100%; 
+          display: flex; 
+          flex-direction: column;
+      }
+  </style>
+
+</head>
+
+<html>
+    {% include 'fluffyBooks/navbar.html' %}
+    
+    
+    <body>
+        <section class="section">
+            <h1 class="title">Recent Recommendations</h1>
+        <div class="columns is-multiline">
+                    
+            {% for recommendation in recent_reviewl %}
+            <div class="column is-half">
+            <div class="box r-same">
+            <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                
+                      <strong><a href="{% url 'book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a>
+                      </strong><small> by: 
+                        {% for i in recommendation.review_book.book_authors.all %}
+                      {{i}}
+                    </small>
+                    {% endfor %}
+                  <br>
+                    
+                    
+                      <small> <a href="{% url 'profile'%}?user={{recommendation.review_user}}">@ {{recommendation.review_user}}</a> - {{recommendation.review_date}}</small>
+                    
+                    
+                      <br>
+                      {{recommendation.review_text}}
+                    </p>
+                  </div>
+                  
+                </div>
+                {% if recommendation.review_user != request_help %}
+            {% else %}
+                <div class="media-right">
+                    <a class="delete" href="{% url 'delete'%}?review={{recommendation.id}}"></a>
+                </div>
+            {% endif %}
+                
+              </article>
+            </div>
+            </div>
+          
+              {% endfor %}
+            
+            </div>
+            </div>
+            
+       <!---{% for recommendation in recent_reviewl %}
+       <p>{{recommendation.review_user}}, {{request_help}}</p>
+        <p><strong>{{recommendation.review_text}}</strong> ----- <a href="{% url 'book' %}?book={{recommendation.review_book.id}}">{{recommendation.review_book}}</a> ---- Reviewed by <a href="{% url 'profile'%}?user={{recommendation.review_user}}">{{recommendation.review_user}}</a><br>
+            {% if recommendation.review_user != request_help %}
+            {% else %}
+                <a href="{% url 'delete'%}?review={{recommendation.id}}">Delete</a>
+            {% endif %}
+        </p>
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+        <p><a href="http://127.0.0.1:8000/fluffyBooks/review">Write a Review!</a></p>
+        <p><a href="http://127.0.0.1:8000/fluffyBooks/">Back Home!</a></p>
+        <p><a href="{% url 'logout_user' %}">Log Out</a></p>
+        {% else %}
+        <p><a href="http://127.0.0.1:8000/fluffyBooks/login">Click here to Log in/Sign in to start reviewing yourself!</a></p>
+        <p><a href="http://127.0.0.1:8000/fluffyBooks/">Back Home!</a></p>
+        {% endif %}-->
+    </section>
+    </body>
+    </html>

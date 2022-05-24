@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+</head>
+
+<html>
+    
+    <body>
+        {% include 'fluffyBooks/navbar.html' %}
+        <section class="section">
+            <h1 class="title">All Genres: </h1>
+            <div class="columns is-multiline">
+                {% for genre in genres %}
+                <div class="column is-one-quarter">
+                    <a class="box has-text-centered has-background-primary-light" href="{% url 'genre_page'%}?genre={{genre.id}}"><strong>{{genre.genre_text}}</strong></a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+
+        
+    </body>
+    </body>
+</html>
