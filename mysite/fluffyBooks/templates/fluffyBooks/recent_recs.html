@@ -84,12 +84,12 @@
         </p>
         {% endfor %}
         {% if request.user.is_authenticated %}
-        <p><a href="http://127.0.0.1:8000/fluffyBooks/review">Write a Review!</a></p>
-        <p><a href="http://127.0.0.1:8000/fluffyBooks/">Back Home!</a></p>
+        <p><a href="{% url 'fluffyBooks:home' %}review">Write a Review!</a></p>
+        <p><a href="{% url 'fluffyBooks:home' %}">Back Home!</a></p>
         <p><a href="{% url 'logout_user' %}">Log Out</a></p>
         {% else %}
-        <p><a href="http://127.0.0.1:8000/fluffyBooks/login">Click here to Log in/Sign in to start reviewing yourself!</a></p>
-        <p><a href="http://127.0.0.1:8000/fluffyBooks/">Back Home!</a></p>
+        <p><a href="{% url 'fluffyBooks:load_login' %}">Click here to Log in/Sign in to start reviewing yourself!</a></p>
+        <p><a href="{% url 'fluffyBooks:home' %}">Back Home!</a></p>
         {% endif %}-->
     </section>
     </body>

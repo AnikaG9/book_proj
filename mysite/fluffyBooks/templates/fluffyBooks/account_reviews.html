@@ -32,8 +32,8 @@
                         General
                     </p>
                     <ul class="menu-list">
-                      <li><a href="http://127.0.0.1:8000/fluffyBooks/account">Account Home</a></li>
-                        <li><a href="http://127.0.0.1:8000/fluffyBooks/accreviews">Reviews</a></li>
+                      <li><a href="{% url 'fluffyBooks:your_profile' %}">Account Home</a></li>
+                        <li><a href="{% url 'fluffyBooks:account_reviews' %}">Reviews</a></li>
                       </ul>
         
                 </aside>

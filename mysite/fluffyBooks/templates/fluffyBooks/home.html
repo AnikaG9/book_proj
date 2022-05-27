@@ -49,7 +49,7 @@
                             <span class="icon">
                                 <i class="fa-solid fa-arrow-pointer"></i>
                             </span>
-                            <a href="http://127.0.0.1:8000/fluffyBooks/reviews"><strong>Discover</strong> recent book
+                            <a href="{% url 'fluffyBooks:reviews' %}"><strong>Discover</strong> recent book
                                 reviews</a>
 
                         </div>
@@ -59,7 +59,7 @@
                             <span class="icon">
                                 <i class="fa-solid fa-arrow-pointer"></i>
                             </span>
-                            <a href="http://127.0.0.1:8000/fluffyBooks/review"><strong>Share</strong> your own favourite
+                            <a href="{% url 'fluffyBooks:review_page' %}"><strong>Share</strong> your own favourite
                                 books</a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             <span class="icon">
                                 <i class="fa-solid fa-arrow-pointer"></i>
                             </span>
-                            <a href="http://127.0.0.1:8000/fluffyBooks/genres"><strong>Explore</strong> new genres</a>
+                            <a href="{% url 'fluffyBooks:genres' %}"><strong>Explore</strong> new genres</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <h2 class="subtitle">Please login or create an account to like a book!</h2>
             </div>
             <div class="message-body has-background-primary-light">
-                <p>It's quick and easy - just click <a href="http://127.0.0.1:8000/fluffyBooks/login">here</a></p>
+                <p>It's quick and easy - just click <a href="{% url 'fluffyBooks:load_login' %}">here</a></p>
         </div>
             </div>
         </article>
@@ -106,7 +106,7 @@
                             <h2 class="subtitle">You succesfully shared a book review!</h2>
                         </div>
                         <div class="message-body has-background-primary-light">
-                            <p>View other recent reviews <a href="http://127.0.0.1:8000/fluffyBooks/reviews">here!</a></p>
+                            <p>View other recent reviews <a href="{% url 'fluffyBooks:reviews' %}">here!</a></p>
                         </div>
                     </article>
                 </div>

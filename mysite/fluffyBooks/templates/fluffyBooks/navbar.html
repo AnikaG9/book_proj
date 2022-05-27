@@ -2,7 +2,7 @@
     <div class="navbar-brand">
         <div class="navbar-item has-text-large is-size-3 has-text-primary">
             <div class="container">
-                <a href="http://127.0.0.1:8000/fluffyBooks/" class="navbar-item has-text-primary">
+                <a href="{% url 'fluffyBooks:home' %}" class="navbar-item has-text-primary">
                     <span class="icon-text">
                         <span class="icon">
                             <i class="fa-solid fa-book-open"></i>
@@ -72,10 +72,10 @@
                     </div>
                 </nav>
                 <div class="buttons">
-                    <a href="http://127.0.0.1:8000/fluffyBooks/signup" class="button is-primary">
+                    <a href="{% url 'fluffyBooks:load_signup' %}" class="button is-primary">
                         Create an account
                     </a>
-                    <a href="http://127.0.0.1:8000/fluffyBooks/login" class="button is-warning">
+                    <a href="{% url 'fluffyBooks:load_login' %}" class="button is-warning">
                         Sign In
                     </a>
                     {% endif %}

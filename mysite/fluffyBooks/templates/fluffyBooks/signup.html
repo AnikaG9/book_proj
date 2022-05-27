@@ -13,8 +13,8 @@
         <section class="section">
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-            <li><a href="http://127.0.0.1:8000/fluffyBooks/login">Sign In</a></li>
-              <li class="is-active"><a href="http://127.0.0.1:8000/fluffyBooks/signup" aria-current="page">Create An Account</a></li> 
+            <li><a href="{% url 'fluffyBooks:load_login' %}">Sign In</a></li>
+              <li class="is-active"><a href="{% url 'fluffyBooks:home' %}signup" aria-current="page">Create An Account</a></li> 
             </ul>
         </nav>
 

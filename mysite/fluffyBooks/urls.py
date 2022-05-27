@@ -2,6 +2,8 @@ from django.urls import path
 
 from . import views
 
+app_name = 'fluffyBooks'
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('login', views.load_login, name='load_login'),
