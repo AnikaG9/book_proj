@@ -18,7 +18,7 @@
             <div class="columns is-multiline">
                 {% for genre in genres %}
                 <div class="column is-one-quarter">
-                    <a class="box has-text-centered has-background-primary-light" href="{% url 'genre_page'%}?genre={{genre.id}}"><strong>{{genre.genre_text}}</strong></a>
+                    <a class="box has-text-centered has-background-primary-light" href="{% url 'fluffyBooks:genre_page'%}?genre={{genre.id}}"><strong>{{genre.genre_text}}</strong></a>
                 </div>
                 {% endfor %}
             </div>

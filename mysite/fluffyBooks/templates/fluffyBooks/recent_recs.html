@@ -40,7 +40,7 @@
                   <div class="content">
                     <p>
                 
-                      <strong><a href="{% url 'book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a>
+                      <strong><a href="{% url 'fluffyBooks:book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a>
                       </strong><small> by: 
                         {% for i in recommendation.review_book.book_authors.all %}
                       {{i}}
@@ -49,7 +49,7 @@
                   <br>
                     
                     
-                      <small> <a href="{% url 'profile'%}?user={{recommendation.review_user}}">@ {{recommendation.review_user}}</a> - {{recommendation.review_date}}</small>
+                      <small> <a href="{% url 'fluffyBooks:profile'%}?user={{recommendation.review_user}}">@ {{recommendation.review_user}}</a> - {{recommendation.review_date}}</small>
                     
                     
                       <br>
@@ -61,7 +61,7 @@
                 {% if recommendation.review_user != request_help %}
             {% else %}
                 <div class="media-right">
-                    <a class="delete" href="{% url 'delete'%}?review={{recommendation.id}}"></a>
+                    <a class="delete" href="{% url 'fluffyBooks:delete'%}?review={{recommendation.id}}"></a>
                 </div>
             {% endif %}
                 

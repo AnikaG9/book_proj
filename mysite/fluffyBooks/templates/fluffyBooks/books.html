@@ -4,8 +4,8 @@
     <h1>All Books: </h1>
     <body>
         {% for book in books %}
-        <ul><li><a href="{% url 'book'%}?book={{book.id}}">{{book.book_text}}</a><br>
-            <a href="{% url 'like'%}?book={{book.id}}">{{book.likes}} Likes</li></ul>
+        <ul><li><a href="{% url 'fluffyBooks:book'%}?book={{book.id}}">{{book.book_text}}</a><br>
+            <a href="{% url 'fluffyBooks:like'%}?book={{book.id}}">{{book.likes}} Likes</li></ul>
         {% endfor %}
 
         <a href="{% url 'fluffyBooks:home' %}">Home</a>

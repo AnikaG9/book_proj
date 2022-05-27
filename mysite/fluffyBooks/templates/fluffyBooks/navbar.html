@@ -83,7 +83,7 @@
                 <p class="level-item is-5 has-text-primary mr-3">
                     You are signed in
                 </p>
-                <a href="{% url 'logout_user' %}" class="button is-warning">
+                <a href="{% url 'fluffyBooks:logout_user' %}" class="button is-warning">
                     <p>Log Out</p>
                 </a>
                 {% endif %}
@@ -109,7 +109,7 @@
                 </form>
                 {% if request.user.is_authenticated %}
                 <div class="navbar-item has-dropdown is-hoverable is-fullwidth">
-                    <a href="{% url 'your_profile' %}" class="navbar-link">
+                    <a href="{% url 'fluffyBooks:your_profile' %}" class="navbar-link">
                         <span class="icon-text">
                             <span class="icon">
                                 <i class="fa-solid fa-user-large"></i>

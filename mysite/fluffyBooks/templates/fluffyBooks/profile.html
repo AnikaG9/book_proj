@@ -31,7 +31,7 @@
                         <div class="media-content">
                           <div class="content">
                             <p>
-                              <strong><a href="{% url 'book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong><small> @ {{recommendation.review_book}}</small><small> - {{recommendation.review_date}}</small>
+                              <strong><a href="{% url 'fluffyBooks:book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong><small> @ {{recommendation.review_book}}</small><small> - {{recommendation.review_date}}</small>
                               <br>
                               {{recommendation.review_text}}
                             </p>
@@ -40,7 +40,7 @@
                         </div>
                         {% if request.user.username == username %}
                           <div class="media-right">
-                            <a class="delete" href="{% url 'delete'%}?review={{recommendation.id}}"></a>
+                            <a class="delete" href="{% url 'fluffyBooks:delete'%}?review={{recommendation.id}}"></a>
                           </div>
                         {% endif %}
                       </article>

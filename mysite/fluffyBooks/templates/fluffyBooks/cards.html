@@ -1,7 +1,7 @@
 <div class="columns is-multiline">
     {% for book in cardbooks %}
     <div class="column is-4">
-        <a href="{% url 'book'%}?book={{book.id}}">
+        <a href="{% url 'fluffyBooks:book'%}?book={{book.id}}">
         <div class="card h-same has-background-white">
 
 
@@ -47,7 +47,7 @@
                 
                     <p class="card-footer-item">
                         <span>
-                            <a href="{% url 'like'%}?book={{book.id}}">{{book.likes}}
+                            <a href="{% url 'fluffyBooks:like'%}?book={{book.id}}">{{book.likes}}
 
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-thumbs-up"></i>

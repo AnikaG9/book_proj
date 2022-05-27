@@ -59,7 +59,7 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong><a href="{% url 'book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong>
+                  <strong><a href="{% url 'fluffyBooks:book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong>
                   {% for i in recommendation.review_book.book_authors.all %}
                   <small> By: {{i}}</small>
                   {% endfor %}
@@ -71,7 +71,7 @@
               
             </div>
             <div class="media-right">
-              <a class="delete" href="{% url 'delete'%}?review={{recommendation.id}}"></a>
+              <a class="delete" href="{% url 'fluffyBooks:delete'%}?review={{recommendation.id}}"></a>
             </div>
           </article>
         </div>
