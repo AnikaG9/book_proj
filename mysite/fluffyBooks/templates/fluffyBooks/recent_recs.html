@@ -74,23 +74,7 @@
             </div>
             </div>
             
-       <!---{% for recommendation in recent_reviewl %}
-       <p>{{recommendation.review_user}}, {{request_help}}</p>
-        <p><strong>{{recommendation.review_text}}</strong> ----- <a href="{% url 'book' %}?book={{recommendation.review_book.id}}">{{recommendation.review_book}}</a> ---- Reviewed by <a href="{% url 'profile'%}?user={{recommendation.review_user}}">{{recommendation.review_user}}</a><br>
-            {% if recommendation.review_user != request_help %}
-            {% else %}
-                <a href="{% url 'delete'%}?review={{recommendation.id}}">Delete</a>
-            {% endif %}
-        </p>
-        {% endfor %}
-        {% if request.user.is_authenticated %}
-        <p><a href="{% url 'fluffyBooks:home' %}review">Write a Review!</a></p>
-        <p><a href="{% url 'fluffyBooks:home' %}">Back Home!</a></p>
-        <p><a href="{% url 'logout_user' %}">Log Out</a></p>
-        {% else %}
-        <p><a href="{% url 'fluffyBooks:load_login' %}">Click here to Log in/Sign in to start reviewing yourself!</a></p>
-        <p><a href="{% url 'fluffyBooks:home' %}">Back Home!</a></p>
-        {% endif %}-->
+       
     </section>
     </body>
     </html>

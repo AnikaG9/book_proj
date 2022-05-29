@@ -97,7 +97,7 @@ def verify_login(request):
     if user is not None:
         print('here')
         login(request, user)
-        return redirect('home')
+        return redirect('fluffyBooks:home')
     else:
         print('got it')
         return render(request, 'fluffyBooks/login_signup.html')
@@ -118,7 +118,7 @@ def signup(request):
 
 def logout_mine(request):
     logout(request)
-    return redirect('home')
+    return redirect('fluffyBooks:home')
 
 def like(request):
     if not request.user.is_authenticated:
