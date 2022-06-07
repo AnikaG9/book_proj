@@ -97,7 +97,7 @@ def verify_login(request):
     if user is not None:
         print('here')
         login(request, user)
-        return redirect(reverse('fluffyBooks:home'))
+        return reverse('fluffyBooks:home')
     else:
         print('got it')
         return render(request, 'fluffyBooks/login_signup.html')
