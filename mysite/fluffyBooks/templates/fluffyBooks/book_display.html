@@ -30,10 +30,10 @@
         {% else %}
         <article class="message">
             <div class="message-header has-background-primary">
-                <h2>There are no books on this {{subject}}</h2>
+                <h2>There are no books on {{subject}}</h2>
             </div>
             <div class="message-body has-background-primary-light">
-                <p>Be the first to <a href="{% url 'fluffyBooks:review_page' %}">write a review</a>on this!</p>
+                <p>Be the first to <a href="{% url 'fluffyBooks:review_page' %}">write a review</a> on this!</p>
             </div>
         </article>
         {% endif %}

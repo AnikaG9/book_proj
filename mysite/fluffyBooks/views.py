@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseRedirect
 from numpy import delete 
 from .models import Book, Genre, Author, Recommendation, User
@@ -97,7 +97,7 @@ def verify_login(request):
     if user is not None:
         print('here')
         login(request, user)
-        return redirect('fluffyBooks:home')
+        return redirect(reverse('fluffyBooks:home'))
     else:
         print('got it')
         return render(request, 'fluffyBooks/login_signup.html')

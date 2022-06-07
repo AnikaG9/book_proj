@@ -77,8 +77,19 @@
         </div>
         </div>
       
-          {% endfor %}
+        {% endfor %}
         
+{% else %}
+
+<article class="message">
+  <div class="message-header has-background-primary">
+      <h2>You haven't reviewed any books yet! </h2>
+  </div>
+  <div class="message-body has-background-primary-light">
+      <p>Do so now! It's quick and easy - just click <a href="{% url 'fluffyBooks:review_page' %}">here</a> on this!</p>
+  </div>
+</article>
+</div>
         </div>
         </div>
         {% endif %}
