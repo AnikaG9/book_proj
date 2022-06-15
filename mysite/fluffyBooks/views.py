@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseRedirect
-from numpy import delete 
 from .models import Book, Genre, Author, Recommendation, User
 from django.contrib.auth.models import User
 from django.contrib import messages
