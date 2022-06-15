@@ -31,8 +31,13 @@
                         <div class="media-content">
                           <div class="content">
                             <p>
-                              <strong><a href="{% url 'fluffyBooks:book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a></strong><small> @ {{recommendation.review_book}}</small><small> - {{recommendation.review_date}}</small>
-                              <br>
+                              <strong><a href="{% url 'fluffyBooks:book'%}?book={{recommendation.review_book.id}}">{{recommendation.review_book}} </a>
+                              </strong><small> by: 
+                                {% for i in recommendation.review_book.book_authors.all %}
+                              {{i}}
+                            </small>
+                            {% endfor %}
+                            <br>
                               {{recommendation.review_text}}
                             </p>
                           </div>

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.utils import timezone
+import csv
 
 #ASK ABOUT GENRE AND HOW ITS ONLY CONNECTED TO BOOK
 
@@ -47,6 +48,8 @@ def home(request):
     return render(request, 'fluffyBooks/home.html', context)
 
 def index(sequence, position):
+    with open('bookdata.csv', newline='') as f:
+        reader = csv.reader(f, )
     return sequence[position]
 
 def review_book(request):
@@ -296,7 +299,7 @@ def delete_review(request):
        # return HttpResponse('Oopsie, nu uh')
     
     reviewo.delete()
-    return HttpResponseRedirect(f'/fluffyBooks/reviews')
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 def search(request):
     print('in search...')
