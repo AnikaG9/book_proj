@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Book, Genre, Author, Recommendation, User
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -47,8 +47,6 @@ def home(request):
     return render(request, 'fluffyBooks/home.html', context)
 
 def index(sequence, position):
-    with open('bookdata.csv', newline='') as f:
-        reader = csv.reader(f, )
     return sequence[position]
 
 def review_book(request):
@@ -189,7 +187,12 @@ def account_reviews(request):
 
 def populate_data(request):
     # read the csv and refresh your databalse
+    with open('bookdata.csv', newline='') as f:
+        reader = csv.reader(f, delimiter=',')
+        for row in reader:
     pass
+
+    
 
 def book(request):
     booko = request.GET['book']#book_id value, key=book in URL
