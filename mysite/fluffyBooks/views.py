@@ -185,12 +185,12 @@ def account_reviews(request):
         context = {'recommendations': recs}
         return render(request, 'fluffyBooks/account_reviews.html', context)
 
-def populate_data(request):
+#def populate_data(request):
     # read the csv and refresh your databalse
-    with open('bookdata.csv', newline='') as f:
-        reader = csv.reader(f, delimiter=',')
-        for row in reader:
-    pass
+    #with open('bookdata.csv', newline='') as f:
+        #reader = csv.reader(f, delimiter=',')
+        #for row in reader:
+    #pass
 
     
 
