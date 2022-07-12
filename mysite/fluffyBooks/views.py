@@ -8,12 +8,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.template import loader
 from django.utils import timezone
 import csv
+from django.conf import settings
 
 #ASK ABOUT GENRE AND HOW ITS ONLY CONNECTED TO BOOK
 
 
 # Create your views here.
 def home(request):
+    #populate_data(request)
     try:
         posted = request.GET['post']
     except:
@@ -165,7 +167,9 @@ def profile(request):
 
 def your_profile(request):
     recs = Recommendation.objects.filter(review_user=request.user.username)
-    context = {'recommendations': recs}
+    recs_number = recs.count()
+    print(recs_number)
+    context = {'recommendations': recs, 'recs_number': recs_number}
     return render(request, 'fluffyBooks/your_profile.html', context)
 
 def account_reviews(request):
@@ -185,14 +189,22 @@ def account_reviews(request):
         context = {'recommendations': recs}
         return render(request, 'fluffyBooks/account_reviews.html', context)
 
-#def populate_data(request):
-    # read the csv and refresh your databalse
-    #with open('bookdata.csv', newline='') as f:
-        #reader = csv.reader(f, delimiter=',')
-        #for row in reader:
-    #pass
+# def populate_data(request):
+#     # read the csv and refresh your databalse
+#     filepath = str(settings.DATA_DIR) + '/bookdata.csv'
+#     print(filepath)
 
-    
+#     with open(filepath, newline='') as f:
+#         reader = csv.reader(f, delimiter=',')
+#         for row in reader:
+#             for i in row:
+#                 if 
+#                 #book = Book(book_text=i, likes=0)
+#                 print(i)
+#     #pass
+#     return HttpResponse('hi')
+
+
 
 def book(request):
     booko = request.GET['book']#book_id value, key=book in URL
@@ -224,25 +236,24 @@ def post_review(request):
         if Author.objects.filter(author_name=author_text).exists():
             author_txt = Author.objects.filter(author_name=author_text)
             author = Author.objects.get(pk=author_txt[0].id)
-            print(author)
+            
         else:
              authorqs = Author(author_name=author_text)
              authorqs.save()
              author = Author.objects.get(pk=authorqs.id)
-             print(author)
+             
 
         # genre_txt = Genre.objects.filter(genre_text=genre_text)
         # genre = genre_txt[0]
         # author_txt = Author.objects.filter(author_name=author_text)
         # author = author_txt[0]
 
-        if Book.objects.filter(book_text=book_text).exists():
+        if Book.objects.filter(book_text=book_text).exists():#if 
             book = Book.objects.get(book_text=book_text)
             review = Recommendation(review_text=text, review_user=request.user.username, review_date=timezone.now(), review_book=book)
             book.book_authors.add(author.id)
             for i in genre_text:
-                print(i, 'genre_txt')
-                if Genre.objects.filter(genre_text=i).exists():
+                if Genre.objects.filter(genre_text=i).exists(): #(it will exist)
                     genreqs = Genre.objects.filter(genre_text=i)
                     genre = Genre.objects.get(pk=genreqs[0].id)
                     book.book_genres.add(genre)
