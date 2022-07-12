@@ -97,9 +97,9 @@
 
                         <div class="control has-icons-left has-icons-right">
                             <input class="input" type="text" id="search" name="search"
-                                placeholder="Browse books, genres or authors" />
+                                placeholder="Books, genres or authors" />
                             <span class="icon is-small is-left">
-                                <i class="fa-solid fa-pen"></i>
+                                <i class="fas fa-search"></i>
                             </span>
                         </div>
                         <button class="button is-primary"><span class="icon is-small is-left">
@@ -119,7 +119,19 @@
 
                     <div class="navbar-dropdown is-right">
                         <div class="navbar-item">
-                            {% include 'fluffyBooks/card_profile.html' %}
+                            <a href="{% url 'fluffyBooks:your_profile' %}">
+                                <div class="card h-same">
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <p class="title is-3">{{request.user.username}}</p>
+                                        </div>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <a href="{% url 'fluffyBooks:account_reviews' %}" class="card-footer-item">{{recs_number}} book reviews posted</a>
+                                    </footer>
+                                </div>
+                            
+                            </a>
                         </div>
                     </div>
                 </div>
