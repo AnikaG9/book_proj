@@ -226,10 +226,10 @@ def post_review(request):
         print('in POST section')
         text = request.POST['review_text']
         print(text)
-        book_text = request.POST['book_text']
+        book_text = request.POST['book_text'].capitalize()
         genre_text = request.POST.getlist('genres')
         print(genre_text, 'genre_text')
-        author_text = request.POST['author']
+        author_text = request.POST['author'].capitalize()
     #print(author_text)
 
             
