@@ -39,7 +39,7 @@ def home(request):
         for author in i.book_authors.all():
             authorlist = []
             authorlist.append(author.author_name)
-        card.append(authorlist)
+            card.append(authorlist)
         # add genre
         cards.append(card)
 
