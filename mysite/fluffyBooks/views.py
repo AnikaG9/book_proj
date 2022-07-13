@@ -251,7 +251,7 @@ def post_review(request):
         if Book.objects.filter(book_text=book_text).exists():#if 
             book = Book.objects.get(book_text=book_text)
             review = Recommendation(review_text=text, review_user=request.user.username, review_date=timezone.now(), review_book=book)
-            book.book_authors.add(author.id)
+            #book.book_authors.add(author.id)
             for i in genre_text:
                 if Genre.objects.filter(genre_text=i).exists(): #(it will exist)
                     genreqs = Genre.objects.filter(genre_text=i)
