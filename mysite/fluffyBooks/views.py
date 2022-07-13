@@ -39,7 +39,7 @@ def home(request):
         for author in i.book_authors.all():
             authorlist = []
             authorlist.append(author.author_name)
-            card.append(authorlist)
+        card.append(authorlist)
         # add genre
         cards.append(card)
 
@@ -226,10 +226,10 @@ def post_review(request):
         print('in POST section')
         text = request.POST['review_text']
         print(text)
-        book_text = request.POST['book_text'].capitalize()
+        book_text = request.POST['book_text'].capitalize().strip()
         genre_text = request.POST.getlist('genres')
         print(genre_text, 'genre_text')
-        author_text = request.POST['author'].capitalize()
+        author_text = request.POST['author'].capitalize().strip()
     #print(author_text)
 
             
