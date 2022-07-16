@@ -9,6 +9,7 @@ from django.template import loader
 from django.utils import timezone
 import csv
 from django.conf import settings
+import string
 
 #ASK ABOUT GENRE AND HOW ITS ONLY CONNECTED TO BOOK
 
@@ -224,15 +225,20 @@ def post_review(request):
 
     if request.user.is_authenticated:
         print('in POST section')
+
         text = request.POST['review_text']
         #print(text)
-        book_text = request.POST['book_text'].capitalize().strip()
-        #print(book_text, ':book_text')
+
+        book_texto = request.POST['book_text'].strip()
+        book_text = string.capwords(book_texto)
+        print(book_text, ':book_text')
+
         genre_text = request.POST.getlist('genres')
-        #print(genre_text, 'genre_text')
-        author_text = request.POST['author'].capitalize().strip()
-        #print(author_text, 'author_text')
-    #print(author_text)
+        
+        author_texto = request.POST['author'].strip()
+        author_text = string.capwords(author_texto)
+        print(author_text, 'author_text')
+    
 
             
         if Author.objects.filter(author_name=author_text).exists():
