@@ -225,11 +225,13 @@ def post_review(request):
     if request.user.is_authenticated:
         print('in POST section')
         text = request.POST['review_text']
-        print(text)
+        #print(text)
         book_text = request.POST['book_text'].capitalize().strip()
+        #print(book_text, ':book_text')
         genre_text = request.POST.getlist('genres')
-        print(genre_text, 'genre_text')
+        #print(genre_text, 'genre_text')
         author_text = request.POST['author'].capitalize().strip()
+        #print(author_text, 'author_text')
     #print(author_text)
 
             
