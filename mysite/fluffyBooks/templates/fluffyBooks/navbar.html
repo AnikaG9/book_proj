@@ -127,7 +127,11 @@
                                         </div>
                                     </div>
                                     <footer class="card-footer">
+                                        {% if recs_number == None %}
+                                        <a href="{% url 'fluffyBooks:account_reviews' %}" class="card-footer-item">0 book reviews posted</a>
+                                        {% else %}
                                         <a href="{% url 'fluffyBooks:account_reviews' %}" class="card-footer-item">{{recs_number}} book reviews posted</a>
+                                        {% endif %}
                                     </footer>
                                 </div>
                             

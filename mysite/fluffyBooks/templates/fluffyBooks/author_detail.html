@@ -7,6 +7,17 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/844e445677.js" crossorigin="anonymous"></script>
+
+    <style>
+        .h-same{
+            height:100%; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        
+    </style>
+    
 </head>
 
 <body>
@@ -17,7 +28,7 @@
         {% if cardbooks %}
         {% include 'fluffyBooks/cards.html' %}
         {% else %}
-        <p>hmmmmm</p>
+        <p>This Author currently hasn't had any books of theirs reviewed yet.</p>
         {% endif %}
     </section>
 </body>
