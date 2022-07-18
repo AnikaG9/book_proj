@@ -160,7 +160,7 @@ def review_page(request):
 
 def profile(request):
     username = request.GET['user']
-    recommendations = Recommendation.objects.filter(review_user=username)
+    recommendations = Recommendation.objects.filter(review_user=username).order_by('-review_date')[:8]
     
     
     context = {'recommendations':recommendations, 'username':username}
@@ -175,16 +175,11 @@ def your_profile(request):
 
 def account_reviews(request):
     if Recommendation.objects.filter(review_user=request.user.username):
-        recs = Recommendation.objects.filter(review_user=request.user.username)
-        for rec in recs:
-            review_bk = rec.review_book
-            reviewstr = str(review_bk)
-            splitsi = reviewstr.split(',')
-            #splitsiauth = splitsi[1]
-            splitbook = splitsi[0]
+        recs = Recommendation.objects.filter(review_user=request.user.username).order_by('-review_date')
+        
             
-            context = {'recommendations': recs, 'split1': splitbook}
-            return render(request, 'fluffyBooks/account_reviews.html', context)
+        context = {'recommendations': recs}
+        return render(request, 'fluffyBooks/account_reviews.html', context)
     else:
         recs = None
         context = {'recommendations': recs}
