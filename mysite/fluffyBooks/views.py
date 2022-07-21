@@ -166,6 +166,20 @@ def profile(request):
     context = {'recommendations':recommendations, 'username':username}
     return render(request, 'fluffyBooks/profile.html', context)
 
+# def edit_profileh(request):
+#     if User.objects.filter(username=request.user.username).exists():
+#         user = User.objects.get(username=request.user)
+#         newusername= request.POST["username"]
+#         user.username = newusername
+#         user.save()
+#         return redirect('/fluffyBooks/')
+#     else:
+#         return redirect('/fluffyBooks/signup')
+#     #password = request.POST["password"]
+    
+# def edit_profile(request):
+#     return render(request, 'fluffyBooks/edit_profile.html')
+
 def your_profile(request):
     recs = Recommendation.objects.filter(review_user=request.user.username)
     recs_number = recs.count()
@@ -206,7 +220,7 @@ def book(request):
     booko = request.GET['book']#book_id value, key=book in URL
     book_obj = Book.objects.get(pk=booko)
     
-    recommendations = Recommendation.objects.filter(review_book=booko)
+    recommendations = Recommendation.objects.filter(review_book=booko).order_by('-review_date')
     context = {'recommendations': recommendations, 'book': book_obj}
     return render(request, f'fluffyBooks/book_detail.html', context)
 
